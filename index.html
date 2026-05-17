@@ -165,7 +165,7 @@ const userId = decodeURIComponent(params.get("user") || "");
 
 // ===== MAP =====
 const map = L.map("map",{zoomControl:false, attributionControl:false})
-.setView([48.0196,66.9237],5);
+.setView([55.7558,37.6173],5);
 
 // ===== КЛИК ПО КАРТЕ (ТОЛЬКО В РЕЖИМЕ ВЫБОРА) =====
 map.on("click", function(e) {
@@ -245,7 +245,7 @@ let cancelTriggered = false;
 
 async function geocodeCity(city){
 
-  if (!city) return [48.0196,66.9237];
+  if (!city) return [55.7558,37.6173];
 
   // === ЕСЛИ ЭТО КООРДИНАТЫ (lat,lng) ===
   if (city.includes(",")) {
@@ -260,7 +260,7 @@ async function geocodeCity(city){
 
   // === ИНАЧЕ ОБЫЧНЫЙ ПОИСК ГОРОДА ===
   const url = "https://nominatim.openstreetmap.org/search?format=json&q=" +
-    encodeURIComponent(city + ", Kazakhstan");
+  encodeURIComponent(city + ", Russia");
 
   const res = await fetch(url);
   const data = await res.json();
@@ -268,7 +268,7 @@ async function geocodeCity(city){
   if (data && data.length > 0)
     return [parseFloat(data[0].lat), parseFloat(data[0].lon)];
 
-  return [48.0196,66.9237];
+  return [55.7558,37.6173];
 }
 
 async function buildRoute(from, to, useCurrentPosition = false) {
